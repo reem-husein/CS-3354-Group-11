@@ -1,0 +1,130 @@
+.card {
+  min-height: 90vh;
+  width: 90vw;
+  margin: 0 5vw;
+
+  max-height: 1400px;
+  max-width: 1900px;
+  background-color: #f5f3f4;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: row;
+}
+
+.columnOne {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px 0 40px;
+  min-width: 35%;
+}
+
+.columnTwo {
+  display: flex;
+  flex-direction: column;
+  min-width: 50%;
+}
+
+.columnThree {
+  display: flex;
+  flex-direction: column;
+  min-width: 2%;
+}
+.goalImage {
+  height: 400px;
+  width: auto;
+  margin: 0;
+}
+
+.resourcesTextDiv {
+  margin: 0 10px;
+}
+
+.resourcesHeading {
+  color: #1a4709;
+  font-family: "Raleway", serif;
+  font-weight: 500;
+  font-size: 32px;
+  margin: 0 0 10px 0;
+}
+
+.resourcesLinkTxt {
+  color: #2f3e46;
+  font-family: "Raleway", serif;
+  font-weight: 500;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.linkItem {
+  color: #2f3e46;
+  font-family: "Raleway", serif;
+  font-weight: 500;
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+.endDateTxt {
+  margin-top: auto;
+  color: black;
+  font-family: "Lato", serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.goalHeading {
+  color: #1a4709;
+  font-family: "Raleway", serif;
+  font-weight: 400;
+  font-size: 48px;
+  margin: 70px 5% 30px 5%;
+}
+
+.goalName {
+  color: #1a4709;
+  font-family: "Lato", serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin: 10px 5%;
+}
+
+.goalLongDesc {
+  color: #1a4709;
+  font-family: "Lato", serif;
+  font-weight: 400;
+  font-size: 24px;
+  width: 90%;
+  margin: 20px 5%;
+}
+
+.goalStepsDiv {
+  height: 500px;
+}
+
+.stepsImage {
+  height: 450px;
+  width: auto;
+  margin: 0;
+}
+
+.completeButton {
+  width: 194px;
+  height: 48px;
+  font-family: "Lato", serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: #b47b64;
+  vertical-align: middle;
+  text-align: center;
+  align-self: center;
+  margin: 10px 15px 70px 15px;
+}
+
+.exitButton {
+  font-family: "Raleway", serif;
+  color: black;
+  font-size: 48px;
+  margin-top: 0 !important;
+  margin-right: 105px;
+}

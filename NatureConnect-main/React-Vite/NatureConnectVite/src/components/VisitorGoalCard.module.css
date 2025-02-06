@@ -1,0 +1,77 @@
+.card {
+  background-color: #f5f3f4;
+  width: 80vw;
+  min-height: 500px;
+  border-radius: 25px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.textButtonDiv {
+  width: 100%;
+}
+.textContainer {
+  width: 80%;
+  margin: 0 8% 0 12%;
+  text-align: left;
+}
+
+.goalTypeHeading {
+  color: #1a4709;
+  font-family: "Raleway", serif;
+  font-weight: 400;
+  font-size: 48px;
+}
+
+.name {
+  color: #1a4709;
+  font-family: "Lato", serif;
+  font-weight: 700;
+  font-size: 25px;
+}
+.shortDesc {
+  color: #1a4709;
+  font-family: "Lato", serif;
+  font-weight: 400;
+  font-size: 24px;
+}
+.date {
+  color: #2f3e46;
+  font-family: "Lato", serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 30px;
+}
+
+.showMoreButton {
+  color: #ffffff;
+  background-color: #4e7934;
+  font-family: "Lato", serif;
+  font-weight: 700;
+  font-size: 20px;
+  width: 180px;
+  height: 48px;
+}
+.image {
+  display: none;
+}
+
+@media only screen and (min-width: 1250px) {
+  .image {
+    display: block;
+    width: 500px;
+    height: 450px;
+    margin-left: 10px;
+
+    /*background-image: url("/src/assets/natureImage.png");
+    background-size: cover;
+    background-position: center;
+    */
+  }
+}
+.spacer {
+  height: 25px;
+}

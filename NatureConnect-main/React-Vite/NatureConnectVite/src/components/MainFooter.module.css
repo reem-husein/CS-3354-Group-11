@@ -1,0 +1,51 @@
+.footerDiv {
+  min-height: 180px;
+  width: 100vw;
+  background-color: #242424;
+  border-top: 0.5px solid #eaeaea;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.orgTextDiv {
+  display: flex;
+  flex-direction: column;
+  min-width: 30%;
+}
+
+.attributesDiv {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: flex-end;
+  margin: 20px 30px;
+}
+
+.attribute {
+  color: #89b4ad;
+  font-family: "Raleway", serif;
+  font-weight: 300;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+.logoNC {
+  height: 100px;
+  width: 105px;
+  margin: 10px 0 0 80px;
+}
+.headerTxt {
+  color: white;
+  font-family: "Raleway", serif;
+  font-weight: 300;
+  font-size: 24px;
+  margin: 10px 0 0 70px;
+}
+
+.gwcTxt {
+  color: white;
+  font-family: "Raleway", serif;
+  font-weight: 300;
+  font-size: 18px;
+  margin: 7px 0 0 70px;
+}

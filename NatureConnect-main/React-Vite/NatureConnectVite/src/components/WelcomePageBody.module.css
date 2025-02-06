@@ -1,0 +1,88 @@
+.pageBody {
+  width: 100vw;
+  height: 140vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+.welcomeTop {
+  margin-top: 70px;
+  text-align: center;
+  vertical-align: middle;
+  width: 50%;
+}
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 100px 0;
+}
+
+.welcomeText {
+  font-family: "Raleway", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 128px;
+
+  /*margin: 0 150px 0 0;*/
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+
+.descriptionText {
+  width: 330px;
+  font-family: "Raleway", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  color: black;
+
+  /*margin: 7px 0 0 185px;*/
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 10px;
+  align-self: center;
+}
+
+.joinButton {
+  /*margin: 25px 0 0 325px;*/
+  width: 131px;
+  height: 48px;
+  background-color: #1e3026;
+  color: white;
+  font-family: "Raleway", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 17px;
+  align-self: center;
+}
+
+.textBody {
+  background-color: #f5f3f4;
+}
+
+.textHeading {
+  margin: 0;
+  color: black;
+  font-family: "Raleway", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 50px;
+  padding: 5% 0 10px 15%;
+  /*padding: 100px 0 10px 180px;*/
+}
+
+.text {
+  margin: 0;
+  width: 70%;
+  color: black;
+  font-family: "Raleway", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 20px;
+  padding: 15px 15% 70px 15%;
+}

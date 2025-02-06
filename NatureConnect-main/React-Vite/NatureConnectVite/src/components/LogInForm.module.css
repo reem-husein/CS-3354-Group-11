@@ -1,0 +1,82 @@
+.logInDiv {
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #1a4709;
+}
+
+h3 {
+  color: #333;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+form {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+label {
+  margin-right: 10px;
+  flex: 1;
+  font-weight: bold;
+  color: #1a4709;
+}
+
+input { 
+  flex: 2;
+  background-color: white;
+  padding: 10px;
+  border: none;
+  color: black;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4e7934;
+  color: white; 
+  border: none;
+  margin-top: 50px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e5f2a;
+}
+
+.forgotPasswordLink {
+  margin-top: 10px;
+  color: #89b4ad;
+  text-decoration: none;
+}
+
+.forgotPasswordLink:hover {
+  text-decoration: underline;
+}

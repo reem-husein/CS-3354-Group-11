@@ -1,0 +1,54 @@
+/*.card {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}*/
+.card {
+  /* width: 20vw;
+  height: 320px;
+  min-width: 370px;
+  min-height: 310px;
+  */
+  width: 360px;
+  height: 320px;
+  border-radius: 25px;
+  background-color: #f5f3f4;
+  color: #1a4709;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.goalTypeHeading {
+  font-family: "Raleway", serif;
+  font-weight: 400;
+  font-size: 40px;
+  margin: 50px 20px 0 !important;
+  padding-top: 10px;
+}
+.name {
+  font-family: "Lato", serif;
+  font-weight: 500;
+  font-size: 24px;
+  margin: 20px 30px;
+}
+
+.expandButton {
+  font-size: 40px;
+  color: #1a4709;
+  background-color: #f5f3f4;
+  padding: 0;
+  margin: 0;
+}
+
+.expandButton,
+::after,
+::before {
+  box-sizing: border-box;
+  outline: none !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
