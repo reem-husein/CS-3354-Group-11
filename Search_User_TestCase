@@ -1,0 +1,33 @@
+//Phuong Le's responsibility
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class Search_User_TestCase {
+    @Test
+    void findName() {
+        // If there is a matching name
+        assertEquals(SearchMethod.searchResult("John"), "[John Doe]");
+    }
+
+    @Test
+    void notFindName() {
+        // If there is no matched letter
+        assertEquals(SearchMethod.searchResult("Z"), "Failure: No match found");
+        // If there is no matched name
+        assertEquals(SearchMethod.searchResult("Joe Will"), "Failure: No match found");
+    }
+
+    @Test
+    void suggestName() {
+        // If there are matching names (test partial match)
+        assertEquals(SearchMethod.searchResult("Jo"), "[Jose Davis, Joe Wilson, Joe Martinez, John Doe]");
+    }
+
+    @Test
+    void emptyInput() {
+        // If the input is empty
+        assertEquals(SearchMethod.searchResult(""), "Failure: Input is empty");
+        assertEquals(SearchMethod.searchResult(null), "Failure: Input is empty");
+    }
+}

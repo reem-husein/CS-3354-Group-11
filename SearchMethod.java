@@ -1,3 +1,5 @@
+//Phuong Le's responsibility
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -5,6 +7,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class SearchMethod {
+
+	//a list of data for testing
+	static List<String> testName = List.of("John Doe", "Brown Smith", "Davis Miler", "Jose Davis", "Joe Wilson", 
+									"Brandon Will","Joe Martinez","Micheal Jean","George Gray");
 	
 	//root node
 	private SearchNode root;
@@ -105,10 +111,13 @@ public void suggestHelper (SearchNode root, List<String> wordList, StringBuffer 
 
 //getting suggest word based on the prefix
 public List<String> suggest(String prefix) {
+	//store suggested word
 	List<String> wordList = new ArrayList<>();
 	SearchNode lastNode = root;
+	//keep track of current location
 	StringBuffer curr = new StringBuffer();
 	
+	//traverse through the Trie method
 	for (char c : prefix.toCharArray()) {
 		lastNode = lastNode.childNode.get(c);
 		if (lastNode == null) {
@@ -121,26 +130,22 @@ public List<String> suggest(String prefix) {
 	return wordList;
 }
 
-//test
-public static void main(String[] args) {
-    List<String> testWord = List.of("hello", "dog", "hell", "cat", "a", "hel","help","helps","helping");
-    SearchMethod t = new SearchMethod(testWord);
- 
-    Scanner reader = new Scanner (System.in);
+//getting search result
+public static String searchResult (String str) {
+	
+    SearchMethod t = new SearchMethod(testName);
     
-    //while loop
-    while(true) {
-	    System.out.print ("Enter a word (or type exit to quit): ");
-	    String str = reader.next();
-	    
-	    //quitting condition
-	    if(str.equals("exit")) {
-	    	break;
-	    }
-	    
-	    System.out.println(t.suggest(str));
-
-}
+    if (str == null || str.isEmpty()) {
+    	return "Failure: Input is empty";
+    }
+    
+    List<String> autoSearch = t.suggest(str);
+    
+    if (autoSearch.isEmpty()) {
+    	return "Failure: No match found";
+    }
+    
+    return autoSearch.toString();
 }
 }
 
