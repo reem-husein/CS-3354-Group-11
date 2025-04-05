@@ -2,7 +2,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class LoginHandler {
-    public String userLogin(String username, String password) {
+    public String userLogin(String username, String password, User user) {
         // check if email is valid/correct format
         if (!isValidUsername(username)) {
             return ("Invalid Username");
@@ -12,7 +12,7 @@ public class LoginHandler {
             return ("Invalid Password");
         }
         // get user from database? - change once database is added
-        User user = new User("test", "test123$");
+        // User user = new User("test", "test123$");
         // LoginResponse loginResponse = new LoginResponse()
 
         if (!authenticateUser(user, username, password)) {

@@ -1,7 +1,6 @@
 /**
-* Class for handling unverified uploads
-*/
-
+ * Class for handling unverified uploads
+ */
 
 public class UnverifiedUpload {
     // Common fields based on the second image
@@ -17,7 +16,7 @@ public class UnverifiedUpload {
     /**
      * Constructor with parameters
      * 
-     * @param email User's email address
+     * @param email       User's email address
      * @param phoneNumber User's phone number
      */
     public UnverifiedUpload(String email, String phoneNumber) {
@@ -76,7 +75,8 @@ public class UnverifiedUpload {
     }
 }
 
-/**
+/*
+ * /**
  * Driver License specific upload subclass
  * Extends the base UnverifiedUpload class with driver license specific fields
  */
@@ -96,10 +96,10 @@ public class DriverLicenseClass extends UnverifiedUpload {
     /**
      * Constructor with all fields
      * 
-     * @param email User's email address
-     * @param phoneNumber User's phone number
-     * @param fullName User's full name
-     * @param dob User's date of birth in YYYYMMDD format
+     * @param email         User's email address
+     * @param phoneNumber   User's phone number
+     * @param fullName      User's full name
+     * @param dob           User's date of birth in YYYYMMDD format
      * @param licenseNumber User's license number
      */
     public DriverLicenseClass(String email, String phoneNumber, String fullName, String dob, String licenseNumber) {
@@ -135,13 +135,15 @@ public class DriverLicenseClass extends UnverifiedUpload {
     }
 
     /**
-     * Override the base validation method to include driver license specific validations
+     * Override the base validation method to include driver license specific
+     * validations
      * 
      * @return true if all driver license data is valid, false otherwise
      */
     @Override
     public boolean validateUpload() {
-        // Will combine validations from parent class and driver license specific validations
+        // Will combine validations from parent class and driver license specific
+        // validations
         // Actual validation logic will be implemented later
         return false;
     }
@@ -180,11 +182,10 @@ public class DriverLicenseClass extends UnverifiedUpload {
     }
 }
 
-
-/**
-* Verified Upload class that extends UnverifiedUpload
-* Includes additional administrative fields for verified uploads
-*/
+/*
+ * Verified Upload class that extends UnverifiedUpload
+ * Includes additional administrative fields for verified uploads
+ */
 public class VerifiedUpload extends UnverifiedUpload {
     // Additional fields from the admin upload table
     private String debtOwedTo;
@@ -203,7 +204,7 @@ public class VerifiedUpload extends UnverifiedUpload {
     /**
      * Constructor with base fields from UnverifiedUpload
      * 
-     * @param email User's email address
+     * @param email       User's email address
      * @param phoneNumber User's phone number
      */
     public VerifiedUpload(String email, String phoneNumber) {
@@ -213,16 +214,16 @@ public class VerifiedUpload extends UnverifiedUpload {
     /**
      * Complete constructor with all fields
      * 
-     * @param email User's email address
+     * @param email       User's email address
      * @param phoneNumber User's phone number
-     * @param debtOwedTo Entity to whom debt is owed
-     * @param debtType Type of debt
-     * @param debtAmount Amount of debt as a float
+     * @param debtOwedTo  Entity to whom debt is owed
+     * @param debtType    Type of debt
+     * @param debtAmount  Amount of debt as a float
      * @param missingWork Description of missing work
-     * @param notes Additional notes
+     * @param notes       Additional notes
      */
-    public VerifiedUpload(String email, String phoneNumber, String debtOwedTo, 
-                         String debtType, float debtAmount, String missingWork, String notes) {
+    public VerifiedUpload(String email, String phoneNumber, String debtOwedTo,
+            String debtType, float debtAmount, String missingWork, String notes) {
         super(email, phoneNumber);
         this.debtOwedTo = debtOwedTo;
         this.debtType = debtType;
@@ -350,4 +351,5 @@ public class VerifiedUpload extends UnverifiedUpload {
         // Notes validation will be implemented later
         return false;
     }
+
 }
