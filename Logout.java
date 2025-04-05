@@ -1,8 +1,14 @@
 //Rebeca Rios's responsibility
 
 public class Logout {
-    public void logout(User user) {
+    public String logout(User user) {
         user.setUsername(null);
         user.setPassword(null);
+        if (user.getUsername() == null && user.getPassword() == null) {
+            return ("Logout successful");
+        } else {
+            return ("Error Logging Out");
+        }
+
     }
 }
