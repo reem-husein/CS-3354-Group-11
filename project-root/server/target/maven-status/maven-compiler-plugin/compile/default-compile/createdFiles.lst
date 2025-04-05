@@ -1,0 +1,4 @@
+com/chauffeurcheck/backend/repository/UserRepository.class
+com/chauffeurcheck/backend/ChauffeurCheckApplication.class
+com/chauffeurcheck/backend/model/User.class
+com/chauffeurcheck/backend/service/LoginService.class

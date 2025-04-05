@@ -1,73 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 function SignInPage() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginMessage, setLoginMessage] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:8080/api/login', null, {
+        params: { username, password }
+      });
+      setLoginMessage(response.data);
+    } catch (error) {
+      setLoginMessage('Login failed. Please try again.');
+      console.error(error);
+    }
+  };
+
   return (
-    <div style={styles.container}>
-      <h1>Welcome to ChauffeurCheck!</h1>
-      <h2>Sign in to Account</h2>
-
-      <div style={styles.formGroup}>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          placeholder="Enter your email"
-          style={styles.input}
-        />
-      </div>
-
-      <div style={styles.formGroup}>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Enter your password"
-          style={styles.input}
-        />
-      </div>
-
-      <button style={styles.button}>Sign In</button>
-
-      <hr style={styles.separator} />
-
-      <p>New to ChauffeurCheck?</p>
-      <button style={styles.button}>Create Account</button>
+    <div style={{ width: '300px', margin: '60px auto', textAlign: 'center' }}>
+      <h2>Sign in to ChauffeurCheck</h2>
+      <form onSubmit={handleLogin}>
+        <div style={{ marginBottom: '15px' }}>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your email"
+            style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+          />
+        </div>
+        <div style={{ marginBottom: '15px' }}>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
+            style={{ width: '100%', padding: '8px', marginTop: '5px' }}
+          />
+        </div>
+        <button type="submit" style={{ padding: '10px 16px', backgroundColor: '#3F8CFF', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+          Sign In
+        </button>
+      </form>
+      {loginMessage && <p>{loginMessage}</p>}
     </div>
   );
 }
-
-const styles = {
-  container: {
-    width: '300px',
-    margin: '60px auto',
-    textAlign: 'center',
-    fontFamily: 'Arial, sans-serif',
-    border: '1px solid #ddd',
-    padding: '20px',
-    borderRadius: '4px'
-  },
-  formGroup: {
-    marginBottom: '15px',
-    textAlign: 'left'
-  },
-  input: {
-    width: '100%',
-    padding: '8px',
-    marginTop: '5px',
-    boxSizing: 'border-box'
-  },
-  button: {
-    backgroundColor: '#3F8CFF',
-    color: '#fff',
-    padding: '10px 16px',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    margin: '10px 0'
-  },
-  separator: {
-    margin: '20px 0'
-  }
-};
 
 export default SignInPage;
