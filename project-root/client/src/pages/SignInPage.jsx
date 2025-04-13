@@ -20,10 +20,10 @@ function SignInPage() {
   };
 
   return (
-    <div style={{ width: '300px', margin: '60px auto', textAlign: 'center' }}>
+    <div style={{ width: '350px', margin: '100px auto', textAlign: 'center' }}>
       <h2>Sign in to ChauffeurCheck</h2>
       <form onSubmit={handleLogin}>
-        <div style={{ marginBottom: '15px' }}>
+        <div style={{ marginBottom: '50px' }}>
           <label htmlFor="email">Email:</label>
           <input
             type="email"
