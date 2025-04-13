@@ -15,8 +15,8 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // Routes
-const userRoutes = require("./routes/userRoute");
-app.use("/api/userRoute", userRoutes);
+const Login = require("./ProfileHandling/Login");
+app.use("/api/ProfileHandling", Login);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

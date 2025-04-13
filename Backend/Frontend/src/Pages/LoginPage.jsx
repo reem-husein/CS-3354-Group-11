@@ -19,8 +19,8 @@ const LoginPage = () => {
         headers: { 'Content-Type': 'application/json' },
         // Send the credentials that your endpoint expects
         body: JSON.stringify({
-          email,     // e.g., reem@example.com
-          password,  // e.g., test123
+          email,     
+          password,  
         }),
       });
 
