@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 const DriverSchema = new mongoose.Schema({
 
-  // Employee Upload Object
-  employeeUpload: {
+  loginInfo: {
     email: {
       type: String,
       required: true,
@@ -13,6 +12,10 @@ const DriverSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
+  },
+
+  // Employee Upload Object
+  employeeBasicInfo: {
     phone_number: { 
       type: Number,
       required: false 
@@ -32,32 +35,7 @@ const DriverSchema = new mongoose.Schema({
   },
 
   // Admin Upload Object
-  AdminUpload: {
-    email: {
-      type: String,
-      required: false,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: false,
-    },
-    phone_number: { 
-      type: Number,
-      required: false 
-    },
-    full_name: { 
-      type: String, 
-      required: false 
-    },
-    DOB: { 
-      type: String, // or Date, if you decide to store it as a Date object
-      required: false 
-    },
-    license_number: { 
-      type: String, 
-      required: false 
-    },
+  employeeWorkHistory: {
     debt_owed_to: { 
       type: String, 
       required: false 
@@ -79,53 +57,6 @@ const DriverSchema = new mongoose.Schema({
       required: false 
     },
   },
-
-  // Associate View Object
-  AssociateView: {
-    email: {
-      type: String,
-      required: false,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: false,
-    },
-    phone_number: { 
-      type: Number,
-      required: false 
-    },
-    full_name: { 
-      type: String, 
-      required: false 
-    },
-    DOB: { 
-      type: String, // or Date, if you decide to store it as a Date object
-      required: false 
-    },
-    debt_owed_to: { 
-      type: String, 
-      required: false 
-    },
-    debt_type: { 
-      type: String, 
-      required: false 
-    },
-    debt_amount: { 
-      type: String, 
-      required: false 
-    },
-    missing_work: { 
-      type: String, 
-      required: false 
-    },
-    notes: { 
-      type: String, 
-      required: false 
-    },
-  },
-
-
 });
 
 module.exports = mongoose.model("Driver", DriverSchema);
