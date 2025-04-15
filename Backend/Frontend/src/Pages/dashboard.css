@@ -1,0 +1,31 @@
+.dashboard-container {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  .dashboard-menu {
+    background-color: #6b6f73;
+    padding: 10px 20px;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .dashboard-menu button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 6px 12px;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+  }
+  
+  .dashboard-menu button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .dashboard-content {
+    padding: 40px 20px;
+  }
