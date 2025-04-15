@@ -14,13 +14,15 @@ const LoginPage = () => {
     setError(null); // Clear any previous errors
 
     try {
-      const response = await fetch('http://localhost:5000/api/userRoute/login', {
+      const response = await fetch('http://localhost:5000/api/ProfileHandling/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         // Send the credentials that your endpoint expects
         body: JSON.stringify({
-          email,     
-          password,  
+          "loginInfo": {
+            email,     
+            password,
+          } 
         }),
       });
 
