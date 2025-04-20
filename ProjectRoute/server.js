@@ -14,9 +14,12 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Routes
+/*** Routes ***/
 const Login = require("./ProfileHandling/Login");
 app.use("/api/ProfileHandling", Login);
+
+const driverUpload = require("./ProfileHandling/Driver/DriverUpload");
+app.use("/api/ProfileHandling/Driver", driverUpload);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
