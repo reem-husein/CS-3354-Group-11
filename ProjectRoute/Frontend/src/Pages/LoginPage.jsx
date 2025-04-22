@@ -1,9 +1,7 @@
-// src/LoginPage.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
-  // State to hold the email, password, and any error messages
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -11,35 +9,36 @@ const LoginPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError(null); // Clear any previous errors
+    setError(null);
 
     try {
-      const response = await fetch('http://localhost:5000/api/ProfileHandling/login', {
+      const response = await fetch('http://127.0.0.1:5050/api/ProfileHandling/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // Send the credentials that your endpoint expects
         body: JSON.stringify({
-          "loginInfo": {
-            email,     
+          loginInfo: {
+            email,
             password,
-          } 
+          },
         }),
       });
 
+      console.log("Status:", response.status);
+
+      const data = await response.json();
+      console.log("Response Data:", data);
+
       if (response.ok) {
-        const data = await response.json();
-        // Optionally save user info or a token to localStorage or context here
-        
-        // On a successful login, redirect the user to the driver dashboard
+        // Redirect to the dashboard
+        console.log("Navigating to dashboard...");
         navigate('/driver-dashboard');
       } else {
-        const errorData = await response.json();
-        // Show error message from the backend or a default error message
-        setError(errorData.message || 'Login failed. Please check your credentials.');
+        setError(data.msg || 'Login failed. Please check your credentials.');
       }
+
     } catch (err) {
-      console.error('Error during login:', err);
-      setError('An error occurred. Please try again later.');
+      console.error("Fetch failed:", err);
+      setError('Unable to reach the server. Please try again later.');
     }
   };
 
@@ -75,7 +74,7 @@ const LoginPage = () => {
           />
         </div>
         
-        <button type="submit" style={{ padding: '0.5rem 1rem' }}>Login</button>
+        <button type="submit" style={{ padding: '0.5rem 1rem', width: '100%' }}>Login</button>
       </form>
     </div>
   );
