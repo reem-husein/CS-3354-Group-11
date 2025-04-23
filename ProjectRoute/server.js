@@ -22,6 +22,9 @@ mongoose.connect(MONGO_URI, {
     // Mount routes *after* successful DB connection
     const Login = require("./ProfileHandling/Login");
     app.use("/api/ProfileHandling", Login);
+    // Mount search method
+    const Search = require("./ProfileHandling/Search");
+    app.use("/api", Search)
 
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
