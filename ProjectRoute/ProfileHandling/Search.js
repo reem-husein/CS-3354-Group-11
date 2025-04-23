@@ -54,7 +54,7 @@ class searchInput {
     suggest(prefix) {
         let node = this.root;
         //include space in prefix
-        let current = "";
+        let current = " ";
         //traverse the trie search tree
         for (let i = 0; i < prefix.length; i ++) {
             //if there is no result, return empty
@@ -72,55 +72,31 @@ class searchInput {
     }
 }
 
-//Create a MongoDB schema that matches data structure
-const searchWordSchema = new mongoose.Schema({
-    loginInfo: {
-        email: String,
-        password: String,
-    },
-    employeeBasicInfo: {
-        phone_number: String,
-        full_name: String,
-        DOB: String,
-        license_number: String,
-    },
-    employeeWorkHistory: {
-        debt_owned_to: String,
-        debt_type: String,
-        debt_amount: String,
-        missing_work: String,
-        notes: String,
-    }
-});
-
-// Create a model based on the schema, connecting to employeeBasicInfo collection *
-const SearchWord = mongoose.model('SearchWord', searchWordSchema, 'employeeBasicInfo');
-
 // Route to load search words and provide suggestions
 router.get('/search', async (req, res) => {
     try {
         const { prefix } = req.query;
         
         // Get all words from the database
-        const searchWords = await SearchWord.find({
+        const searchWords = await Driver.find({
             'employeeBasicInfo.full_name': { $regex: `^${prefix}`, $options: 'i' } // case-insensitive prefix match
         });
         
         // Create a new search trie
         const search = new searchInput();
         
-        // Insert all words into the trie
+        //Insert all words into the trie
         searchWords.forEach(item => {
-            const fullName = item.employeeBasicInfo?.full_name;
-            if (fullName) {
-                search.insert(fullName.toLowerCase()); //make it lower case to handle easier
+            if (item.employeeBasicInfo.full_name &&item.employeeBasicInfo.full_name) {
+                search.insert(item.employeeBasicInfo.full_name.toLowerCase()); //make it lower case to handle easier
             }
         });
         
         // Get suggestions based on the prefix
-        const suggestions = search.suggest((prefix || "").toLowerCase());
-        
+        const suggestions = search.suggest(prefix);
+
         res.json({ suggestions });
+
     } catch (error) {
         console.error('Error during search:', error);
         res.status(500).json({ message: 'Server error' });
