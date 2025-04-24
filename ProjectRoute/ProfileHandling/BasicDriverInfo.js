@@ -17,7 +17,10 @@ router.put("/basic-info/:id", async (req, res) => {
     console.log("Successfully updated employeeBasicInfo for:", _id);
     res.status(200).json(updated);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(400).json({
+      message: "Error updating driver basic info",
+      error: err.message,
+    });
   }
 });
 
@@ -27,7 +30,9 @@ router.get("/basic-info/:id", async (req, res) => {
     const driver = await Driver.findById(req.params.id, "employeeBasicInfo");
     res.json(driver);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res
+      .status(500)
+      .json({ message: "Error getting driver basic info", error: err.message });
   }
 });
 
