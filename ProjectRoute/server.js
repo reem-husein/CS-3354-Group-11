@@ -4,34 +4,33 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 3000; //port
+const PORT = process.env.PORT || 5050;
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/testdb";
 
 app.use(cors());
 app.use(express.json());
 
+console.log(">>> Starting server setup...");
+
 mongoose
-  //.connect(process.env.MONGO_URI)
-  .connect(
-    "mongodb+srv://sir-axel:Family%23007@cluster3354.wyf6qes.mongodb.net/class_project?retryWrites=true&w=majority&appName=Cluster3354"
-  )
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("✅ MongoDB connected");
 
-app.get("/api/status", (req, res) => res.status(200).json({ msg: "Ok" }));
+    // Mount routes *after* successful DB connection
+    const Login = require("./ProfileHandling/Login");
+    app.use("/api/ProfileHandling", Login);
+    // Mount search method
+    const Search = require("./ProfileHandling/Search");
+    app.use("/api", Search);
 
-/*** Routes ***/
-const Login = require("./ProfileHandling/Login");
-app.use("/api/ProfileHandling", Login);
-
-const driverUpload = require("./ProfileHandling/Driver/DriverUpload");
-app.use("/api/ProfileHandling/Driver", driverUpload);
-
-const BasicDriverInfo = require("./ProfileHandling/BasicDriverInfo");
-app.use("/api/ProfileHandling", BasicDriverInfo);
-
-const FullDriverProfile = require("./ProfileHandling/FullDriverProfile");
-app.use("/api/ProfileHandling", FullDriverProfile);
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err);
+  });

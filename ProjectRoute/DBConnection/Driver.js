@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+mongoose.set('strictQuery', true); // To prevent mongoose warnings
 
 const DriverSchema = new mongoose.Schema({
 
