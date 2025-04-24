@@ -15,7 +15,8 @@ const DriverDashboard = () => {
 
       <div className="dashboard-content">
         <h2>Driver Dashboard</h2>
-        <p>Welcome, you have successfully logged in!</p>
+        <p>You have successfully logged in.</p>
+        <p>Welcome to ChauffuerCheck!!!</p>
       </div>
     </div>
   );

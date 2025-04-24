@@ -1,48 +1,85 @@
+const express = require("express");
+const mongoose = require("mongoose");
+const router = express.Router();
+const Driver = require("../DBConnection/Driver");
+const reviewInstace = require("../DBConnection/reviewProfile");
 
 class reviewProfile {
     constructor(database) {
         this.database = database;
     }
 
-    //search for unapproved profiles
-    async searchUnapprovedProfiles() {
-
+    //search for pending profiles
+    async searchPendingProfiles() {
+        try {
+            const pendingProfiles = await Driver.find({status: "pending"});
+            return pendingProfiles;
+        }
+        catch (error) {
+            console.error("Error searching for pending profiles:", error);
+            return null;
+        }   
     }
 
     //display the search results
     async displaySearchResults() {
-
-    
-    }
-
+        const pendingProfiles = await this.searchPendingProfiles();
+        return pendingProfiles;
+        } 
+/*
     //choose the profile to approve or deny
-    async getUnverifiedProfiles() {
-        return await this.database.getUnverifiedProfiles();
-}
+    async getPendingProfiles() {
+        return await this.database.getPendingProfiles();
+}*/
 
     //view the profile information
     async viewProfile(profileID) {
-        return await this.database.getProfileByID(profileID);
+        return await Driver.findById(profileID);
+    }
+
+    async updateProfile(profileID, profileData) {
+        return await Driver.findByIdAndUpdate(profileID, profileData, { new: true });
     }
 
     //approve the profile
     async approveProfile(profileID) {
         const profile = await this.viewProfile(profileID);
         if (profile) {
-            profile.status = "approved";
-            await this.database.updateProfile(profileID, profile);
-            return true;
+            return await Driver.findByIdAndUpdate(profileID, { status: "approved" }, { new: true });
         }
+        return null;
     }
 
-    //deny the profile -> delete the profile
+    // PUT approve a profile
+    router.put("/:id/approve", async (req, res) => {
+    try {
+        const result = await reviewInstance.approveProfile(req.params.id);
+        if (!result) return res.status(404).json({ message: "Profile not found" });
+        res.json({ message: "Profile approved", profile: result });
+    } catch (err) {
+        res.status(500).json({ message: "Error approving profile", error: err });
+    }
+});
+
+    //deny the profile 
     async denyProfile(profileID) {
         const profile = await this.viewProfile(profileID);
         if (profile) {
-            profile.status = "denied";
-            await this.database.deleteProfile(profileID);
-            return true;
+            return await Driver.findbyIdandUpdate(profileID, {status: "unapproved"}, {new: true});
         }
-        return false;
+        return null;
     }
 }
+
+        // PUT deny a profile
+    router.put("/:id/deny", async (req, res) => {
+        try {
+            const result = await reviewInstance.denyProfile(req.params.id);
+            if (!result) return res.status(404).json({ message: "Profile not found" });
+            res.json({ message: "Profile denied", profile: result });
+        } catch (err) {
+            res.status(500).json({ message: "Error denying profile", error: err });
+        }
+    });
+
+module.exports = router;
