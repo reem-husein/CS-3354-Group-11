@@ -8,7 +8,7 @@ class ReviewProfile {
     //search for pending profiles
     async searchPendingProfiles() {
         try {
-            const pendingProfiles = await Driver.find({status: "pending"});
+            const pendingProfiles = await Driver.find({ status: "pending" });
             return pendingProfiles;
         }
         catch (error) {
@@ -16,17 +16,6 @@ class ReviewProfile {
             return null;
         }   
     }
-
-/*    //display the search results
-    async displaySearchResults() {
-        const pendingProfiles = await this.searchPendingProfiles();
-        return pendingProfiles;
-        } 
-
-    //choose the profile to approve or deny
-    async getPendingProfiles() {
-        return await this.database.getPendingProfiles();
-}*/
 
     //view the profile information
     async viewProfile(profileID) {
@@ -50,14 +39,24 @@ class ReviewProfile {
     async denyProfile(profileID) {
         const profile = await this.viewProfile(profileID);
         if (profile) {
-            return await Driver.findByIdandUpdate(profileID, {status: "unapproved"}, {new: true});
-        }
+            return await Driver.findByIdAndUpdate(profileID, {status: "denied"}, { new: true });
+        } 
         return null;
     }
 }
 
     // Create an instance of the class
     const reviewInstance = new ReviewProfile();
+
+    // GET pending profiles
+    router.get("/pending", async (req, res) => {
+        try {
+            const pending = await reviewInstance.searchPendingProfiles();
+            res.json(pending);
+        } catch (err) {
+            res.status(500).json({ message: "Error fetching pending profiles", error: err });
+        }
+    });
 
     // PUT approve a profile
     router.put("/:id/approve", async (req, res) => {

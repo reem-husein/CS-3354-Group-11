@@ -12,7 +12,7 @@ class reviewProfile {
     //search for pending profiles
     async searchPendingProfiles() {
         try {
-            const pendingProfiles = await Driver.find({status: "pending"}).toArray();
+            const pendingProfiles = await Driver.find({status: "pending"});
             return pendingProfiles;
         }
         catch (error) {
@@ -34,7 +34,7 @@ class reviewProfile {
 
     //view the profile information
     async viewProfile(profileID) {
-        return await Driver.findByID(profileID);
+        return await Driver.findById(profileID);
     }
 
     async updateProfile(profileID, profileData) {
@@ -65,7 +65,7 @@ class reviewProfile {
     async denyProfile(profileID) {
         const profile = await this.viewProfile(profileID);
         if (profile) {
-            return await Driver.findbyIDandUpdate(profileID, {status: "unapproved"}, {new: true});
+            return await Driver.findbyIdandUpdate(profileID, {status: "unapproved"}, {new: true});
         }
         return null;
     }
@@ -81,4 +81,5 @@ class reviewProfile {
             res.status(500).json({ message: "Error denying profile", error: err });
         }
     });
+
 module.exports = router;

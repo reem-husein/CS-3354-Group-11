@@ -12,11 +12,10 @@ app.use(express.json());
 
 console.log(">>> Starting server setup...");
 
-mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => {
     console.log("✅ MongoDB connected");
 
@@ -25,11 +24,11 @@ mongoose
     app.use("/api/ProfileHandling", Login);
     // Mount search method
     const Search = require("./ProfileHandling/Search");
-    app.use("/api", Search);
+    app.use("/api", Search)
 
     // Mount review method
-    const ReviewProfile = require("./ProfileHandling/Admin/ReviewProfile");
-    app.use("/api", ReviewProfile)
+    const ReviewProfile = require("./ProfileHandling/ReviewProfile");
+    app.use("/api/review", ReviewProfile)
 
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);

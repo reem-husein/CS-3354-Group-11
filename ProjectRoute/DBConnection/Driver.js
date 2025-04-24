@@ -58,6 +58,12 @@ const DriverSchema = new mongoose.Schema({
       required: false 
     },
   },
+
+  status: {
+    type: String,
+    required: false,
+    default: null  // Optional default value
+  }
 });
 
 module.exports = mongoose.model("Driver", DriverSchema);
