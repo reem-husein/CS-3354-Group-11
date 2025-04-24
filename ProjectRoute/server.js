@@ -27,6 +27,14 @@ mongoose
     const Search = require("./ProfileHandling/Search");
     app.use("/api", Search);
 
+    //basic driver info
+    const BasicDriverInfo = require("./ProfileHandling/BasicDriverInfo");
+    app.use("/api/ProfileHandling", BasicDriverInfo);
+
+    //full driver profile
+    const FullDriverProfile = require("./ProfileHandling/FullDriverProfile");
+    app.use("/api/ProfileHandling", FullDriverProfile);
+
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
     });

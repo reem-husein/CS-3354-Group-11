@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Driver = require("../DBConnection/Driver");
 
-// update entire employee information (admin upload)
+// update both employee basic information and work history (admin upload)
 
 router.put("/admin-upload/:id", async (req, res) => {
   try {
@@ -17,12 +17,10 @@ router.put("/admin-upload/:id", async (req, res) => {
 
     res.json(updated);
   } catch (err) {
-    res
-      .status(400)
-      .json({
-        message: "Error updating employee info (admin upload)",
-        error: err.message,
-      });
+    res.status(400).json({
+      message: "Error updating employee info (admin upload)",
+      error: err.message,
+    });
   }
 });
 
@@ -41,6 +39,7 @@ router.put("/full-profile/:id", async (req, res) => {
     );
 
     res.json(updated);
+    s;
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -55,12 +54,10 @@ router.get("/full-profile/:id", async (req, res) => {
     );
     res.json(driver);
   } catch (err) {
-    res
-      .status(500)
-      .json({
-        message: "Error getting driver full profile",
-        error: err.message,
-      });
+    res.status(500).json({
+      message: "Error getting driver full profile",
+      error: err.message,
+    });
   }
 });
 
