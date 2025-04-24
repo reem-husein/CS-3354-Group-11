@@ -27,6 +27,10 @@ mongoose
     const Search = require("./ProfileHandling/Search");
     app.use("/api", Search);
 
+    // Mount review method
+    const ReviewProfile = require("./ProfileHandling/Admin/ReviewProfile");
+    app.use("/api", ReviewProfile)
+
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);
     });
