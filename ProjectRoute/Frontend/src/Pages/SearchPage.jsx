@@ -70,9 +70,9 @@ export default function SearchPage() {
     }
   };
 
-  const handleEdit = (name) => {
-    alert(`Edit clicked for ${name}`);
-  };
+  const handleEdit = (profile) => {
+    navigate(`/edit-profile/${profile.name}`, { state: profile });
+  };  
 
   return (
     <div className="app-container">
@@ -132,7 +132,7 @@ export default function SearchPage() {
                 <td>
                   <button
                     className="edit-btn"
-                    onClick={() => handleEdit(profile.name)}
+                    onClick={() => handleEdit(profile)}
                   >
                     Edit
                   </button>

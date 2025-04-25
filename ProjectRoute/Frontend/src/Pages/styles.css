@@ -35,7 +35,7 @@
   .edit-btn:hover {
     background-color: #37383a;
   }
-  
+
   .search-bar-container {
     display: flex;
     align-items: center;
@@ -65,5 +65,50 @@
   
   .search-icon-btn:hover {
     background-color: #f0f0f0;
+  }
+  
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin-top: 20px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .form-row label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+  }
+  
+  .form-row input,
+  .form-row textarea {
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .update-btn {
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: #1e87f0;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .update-btn:hover {
+    background-color: #115ebc;
   }
   
