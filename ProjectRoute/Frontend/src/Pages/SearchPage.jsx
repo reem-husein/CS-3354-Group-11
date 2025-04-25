@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
+import "./dashboard.css";
 
 export default function SearchPage() {
   const navigate = useNavigate();

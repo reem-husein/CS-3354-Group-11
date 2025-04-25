@@ -88,6 +88,16 @@ const LoginPage = () => {
           <button type="submit" className={classes.loginButton}>
             Login
           </button>
+        
+          <hr />
+
+          <button 
+            type="submit" 
+            className={classes.loginButton}
+            onClick={() => navigate("/create-account")}
+          >
+            Create Account
+          </button>
         </form>
       </div>
     </div>

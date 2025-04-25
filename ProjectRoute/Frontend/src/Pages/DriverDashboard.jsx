@@ -5,7 +5,7 @@ import "./dashboard.css";
 const DriverDashboard = () => {
   const navigate = useNavigate();
 
-  // Example placeholder values add api database stuff here!
+  // Example placeholder values – replace with API data later
   const profilesPurchased = 8;
   const applicationsToApprove = 3;
   const weeklyOrders = 12;
@@ -21,6 +21,13 @@ const DriverDashboard = () => {
       <div className="dashboard-content">
         <h2>Driver Dashboard</h2>
         <h3>Welcome to ChauffeurCheck!</h3>
+
+        <button 
+          className="application-btn" 
+          onClick={() => navigate("/driver-application")}
+        >
+          Fill Application
+        </button>
 
         <div className="dashboard-cards">
           <div className="dashboard-card">
