@@ -35,3 +35,35 @@
   .edit-btn:hover {
     background-color: #37383a;
   }
+  
+  .search-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .search-input {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 14px;
+    width: 250px;
+    background-color: white;
+  }
+  
+  .search-icon-btn {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    font-size: 18px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .search-icon-btn:hover {
+    background-color: #f0f0f0;
+  }
+  

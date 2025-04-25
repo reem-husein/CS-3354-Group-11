@@ -1,13 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles.css"; // Keep using this CSS file
+import "./styles.css";
 
 export default function SearchPage() {
   const navigate = useNavigate();
 
+  // add api database connections here, just needs to read name and email 
+  // and it should display it
   const results = [
     { name: "Jane Doe", email: "jane.doe@example.com" },
     { name: "John Smith", email: "john.smith@example.com" },
+    { name: "Reem Husein", email: "reem@example.com" },
   ];
 
   const handleEdit = (name) => {
@@ -21,8 +24,25 @@ export default function SearchPage() {
         <button onClick={() => navigate("/profiles")}>Profiles</button>
         <button onClick={() => alert("Settings coming soon!")}>Settings</button>
       </nav>
-
-      <h2>Search Results</h2>
+  
+      <h2>Search Profiles</h2>
+  
+      <div className="search-bar-container">
+        <input
+          type="text"
+          placeholder="Search by Name"
+          className="search-input"
+        />
+        <input
+          type="text"
+          placeholder="Search by Phone Number"
+          className="search-input"
+        />
+        <button className="search-icon-btn">
+          🔍
+        </button>
+      </div>
+  
       <table className="results-table">
         <thead>
           <tr>
@@ -49,5 +69,5 @@ export default function SearchPage() {
         </tbody>
       </table>
     </div>
-  );
+  );  
 }

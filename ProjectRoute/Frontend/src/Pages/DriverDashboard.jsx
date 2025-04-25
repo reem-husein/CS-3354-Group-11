@@ -20,8 +20,7 @@ const DriverDashboard = () => {
 
       <div className="dashboard-content">
         <h2>Driver Dashboard</h2>
-        <p>You have successfully logged in.</p>
-        <p>Welcome to ChauffeurCheck!</p>
+        <h3>Welcome to ChauffeurCheck!</h3>
 
         <div className="dashboard-cards">
           <div className="dashboard-card">
