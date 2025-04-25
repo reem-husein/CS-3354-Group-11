@@ -5,6 +5,11 @@ import "./dashboard.css";
 const DriverDashboard = () => {
   const navigate = useNavigate();
 
+  // Example placeholder values add api database stuff here!
+  const profilesPurchased = 8;
+  const applicationsToApprove = 3;
+  const weeklyOrders = 12;
+
   return (
     <div className="dashboard-container">
       <nav className="dashboard-menu">
@@ -16,7 +21,22 @@ const DriverDashboard = () => {
       <div className="dashboard-content">
         <h2>Driver Dashboard</h2>
         <p>You have successfully logged in.</p>
-        <p>Welcome to ChauffuerCheck!!!</p>
+        <p>Welcome to ChauffeurCheck!</p>
+
+        <div className="dashboard-cards">
+          <div className="dashboard-card">
+            <div className="dashboard-number">{profilesPurchased}</div>
+            <div className="dashboard-label">Profiles Recently Purchased</div>
+          </div>
+          <div className="dashboard-card">
+            <div className="dashboard-number">{applicationsToApprove}</div>
+            <div className="dashboard-label">Applications to Approve</div>
+          </div>
+          <div className="dashboard-card">
+            <div className="dashboard-number">{weeklyOrders}</div>
+            <div className="dashboard-label">Weekly Orders</div>
+          </div>
+        </div>
       </div>
     </div>
   );
