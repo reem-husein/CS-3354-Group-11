@@ -1,3 +1,4 @@
+// SearchPage.js
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
@@ -5,28 +6,69 @@ import "./styles.css";
 export default function SearchPage() {
   const navigate = useNavigate();
 
-  // ——————— State for fetched results ———————
+  // ——————— State ———————
+  const [originalResults, setOriginalResults] = useState([]);
   const [results, setResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // ——————— Fetch all users on mount ———————
+  // ——————— Load all users on mount ———————
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchAllUsers = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:5050/api/ProfileHandling/users");       // <-- adjust path if your API is mounted elsewhere
+        const res = await fetch(
+          "http://localhost:5050/api/ProfileHandling/users"
+        );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const users = await res.json();
-        // users is expected to be an array of { id, email, name }
-        setResults(users.map(u => ({
-          name: u.name,
-          email: u.email
-        })));
+        const users = await res.json(); // [{ id, email, name }]
+        setOriginalResults(users);
+        setResults(users);
       } catch (err) {
         console.error("Failed to load profiles:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
       }
     };
-
-    fetchUsers();
+    fetchAllUsers();
   }, []);
+
+  // ——————— Search handler ———————
+  const handleSearch = async () => {
+    if (!searchTerm.trim()) {
+      // empty input → reset to all
+      setResults(originalResults);
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const prefix = encodeURIComponent(searchTerm.toLowerCase());
+      const res = await fetch(
+        `http://localhost:5050/api/search?prefix=${prefix}`
+      );
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const { suggestions } = await res.json(); // { suggestions: [" alice", " alicia", ...] }
+
+      // trim leading spaces & lowercase
+      const trimmed = suggestions.map((s) => s.trim().toLowerCase());
+
+      // filter originalResults by matching name
+      const filtered = originalResults.filter((u) =>
+        trimmed.includes((u.name || "").toLowerCase())
+      );
+
+      setResults(filtered);
+    } catch (err) {
+      console.error("Search failed:", err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleEdit = (name) => {
     alert(`Edit clicked for ${name}`);
@@ -39,23 +81,22 @@ export default function SearchPage() {
         <button onClick={() => navigate("/profiles")}>Profiles</button>
         <button onClick={() => alert("Settings coming soon!")}>Settings</button>
       </nav>
-  
+
       <h2>Search Profiles</h2>
-  
+
       <div className="search-bar-container">
         <input
           type="text"
           placeholder="Search by Name"
           className="search-input"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <input
-          type="text"
-          placeholder="Search by Phone Number"
-          className="search-input"
-        />
-        <button className="search-icon-btn">🔍</button>
+        <button className="search-icon-btn" onClick={handleSearch}>
+          🔍
+        </button>
       </div>
-  
+
       <table className="results-table">
         <thead>
           <tr>
@@ -65,7 +106,25 @@ export default function SearchPage() {
           </tr>
         </thead>
         <tbody>
-          {results.length > 0 ? (
+          {loading ? (
+            <tr>
+              <td colSpan="3" style={{ textAlign: "center" }}>
+                Loading…
+              </td>
+            </tr>
+          ) : error ? (
+            <tr>
+              <td colSpan="3" style={{ textAlign: "center", color: "red" }}>
+                Error: {error}
+              </td>
+            </tr>
+          ) : results.length === 0 ? (
+            <tr>
+              <td colSpan="3" style={{ textAlign: "center" }}>
+                No profiles found.
+              </td>
+            </tr>
+          ) : (
             results.map((profile, idx) => (
               <tr key={idx}>
                 <td>{profile.name || "—"}</td>
@@ -80,15 +139,9 @@ export default function SearchPage() {
                 </td>
               </tr>
             ))
-          ) : (
-            <tr>
-              <td colSpan="3" style={{ textAlign: "center", padding: "1rem" }}>
-                No profiles found.
-              </td>
-            </tr>
           )}
         </tbody>
       </table>
     </div>
-  );  
+  );
 }
