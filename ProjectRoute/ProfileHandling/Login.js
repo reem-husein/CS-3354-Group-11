@@ -47,11 +47,11 @@ router.post("/login", async (req, res) => {
 // Get all users
 router.get("/users", async (req, res) => {
   try {
-    const drivers = await Driver.find();                // fetch all docs
-    const users = drivers.map(d => ({                   // strip down to just what you want
+    const drivers = await Driver.find();
+    const users = drivers.map(d => ({
       id: d._id,
       email: d.loginInfo.email,
-      // you can include other fields here if you have them
+      name: d.employeeBasicInfo.full_name || null,  // grab full_name
     }));
     res.json(users);
   } catch (err) {
