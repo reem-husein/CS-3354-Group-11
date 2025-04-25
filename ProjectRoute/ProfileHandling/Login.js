@@ -44,15 +44,20 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Get all users
+// Get all users (only those with a name)
 router.get("/users", async (req, res) => {
   try {
     const drivers = await Driver.find();
-    const users = drivers.map(d => ({
-      id: d._id,
-      email: d.loginInfo.email,
-      name: d.employeeBasicInfo.full_name || null,  // grab full_name
-    }));
+
+    // Keep only those with a non-null, non-empty full_name
+    const users = drivers
+      .filter(d => d.employeeBasicInfo.full_name) 
+      .map(d => ({
+        id: d._id,
+        email: d.loginInfo.email,
+        name: d.employeeBasicInfo.full_name
+      }));
+
     res.json(users);
   } catch (err) {
     console.error("GET USERS ERROR:", err);
