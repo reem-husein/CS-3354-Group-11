@@ -44,4 +44,20 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Get all users
+router.get("/users", async (req, res) => {
+  try {
+    const drivers = await Driver.find();                // fetch all docs
+    const users = drivers.map(d => ({                   // strip down to just what you want
+      id: d._id,
+      email: d.loginInfo.email,
+      // you can include other fields here if you have them
+    }));
+    res.json(users);
+  } catch (err) {
+    console.error("GET USERS ERROR:", err);
+    res.status(500).json({ msg: "Server error", error: err.message });
+  }
+});
+
 module.exports = router;
