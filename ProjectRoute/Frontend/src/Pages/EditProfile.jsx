@@ -41,6 +41,13 @@ const EditProfile = () => {
           </label>
         </div>
 
+        <div className="form-row">
+          <label>
+            Email:
+            <input type="email" defaultValue={profile.email || ""} />
+          </label>
+        </div>
+
         <hr />
 
         <h3>Debt</h3>
@@ -63,6 +70,8 @@ const EditProfile = () => {
           </label>
         </div>
 
+        <hr />
+        
         <div className="form-row">
           <label>
             Missing Work:
