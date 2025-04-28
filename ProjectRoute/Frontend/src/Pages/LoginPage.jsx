@@ -33,9 +33,14 @@ const LoginPage = () => {
       console.log("Response Data:", data);
 
       if (response.ok) {
-        // Redirect to the dashboard
-        console.log("Navigating to dashboard...");
-        navigate("/driver-dashboard");
+        // Special admin check
+        if (email === "admin@example.com" && password === "test") {
+          console.log("Admin login detected. Navigating to /driver-dashboard...");
+          navigate("/driver-dashboard");
+        } else {
+          console.log("Regular user. Navigating to /driver-dashboard2...");
+          navigate("/driver-dashboard2");
+        }
       } else {
         setError(data.msg || "Login failed. Please check your credentials.");
       }
@@ -43,6 +48,11 @@ const LoginPage = () => {
       console.error("Fetch failed:", err);
       setError("Unable to reach the server. Please try again later.");
     }
+  };
+
+  const handleCreateAccount = (e) => {
+    e.preventDefault(); // prevent double form submit
+    navigate("/create-account");
   };
 
   return (
@@ -88,13 +98,12 @@ const LoginPage = () => {
           <button type="submit" className={classes.loginButton}>
             Login
           </button>
-        
+
           <hr />
 
           <button 
-            type="submit" 
             className={classes.loginButton}
-            onClick={() => navigate("/create-account")}
+            onClick={handleCreateAccount}
           >
             Create Account
           </button>

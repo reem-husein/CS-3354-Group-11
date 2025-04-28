@@ -26,10 +26,10 @@ router.put("/admin-upload/:id", async (req, res) => {
 
 // update entire employee information with login (admin edit)
 
-router.put("/full-profile/:id", async (req, res) => {
+router.put("/full-profile/:email", async (req, res) => {
   try {
-    const updated = await Driver.findByIdAndUpdate(
-      req.params.id,
+    const updated = await Driver.findOneAndUpdate(
+      { "loginInfo.email": req.params.email }, // find by email inside loginInfo
       {
         loginInfo: req.body.loginInfo,
         employeeBasicInfo: req.body.employeeBasicInfo,
@@ -38,8 +38,11 @@ router.put("/full-profile/:id", async (req, res) => {
       { new: true }
     );
 
+    if (!updated) {
+      return res.status(404).json({ error: "Driver not found." });
+    }
+
     res.json(updated);
-    s;
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

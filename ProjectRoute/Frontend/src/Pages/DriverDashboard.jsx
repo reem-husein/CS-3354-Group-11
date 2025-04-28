@@ -16,18 +16,12 @@ const DriverDashboard = () => {
         <button onClick={() => navigate("/driver-dashboard")}>Home</button>
         <button onClick={() => navigate("/profiles")}>Profiles</button>
         <button onClick={() => alert("Settings coming soon!")}>Settings</button>
+        <button onClick={() => navigate("/")}>Logout</button>
       </nav>
 
       <div className="dashboard-content">
-        <h2>Driver Dashboard</h2>
+        <h2>Admin Dashboard</h2>
         <h3>Welcome to ChauffeurCheck!</h3>
-
-        <button 
-          className="application-btn" 
-          onClick={() => navigate("/driver-application")}
-        >
-          Fill Application
-        </button>
 
         <div className="dashboard-cards">
           <div className="dashboard-card">

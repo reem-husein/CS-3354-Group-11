@@ -81,6 +81,7 @@ export default function SearchPage() {
         <button onClick={() => navigate("/driver-dashboard")}>Home</button>
         <button onClick={() => navigate("/profiles")}>Profiles</button>
         <button onClick={() => alert("Settings coming soon!")}>Settings</button>
+        <button onClick={() => navigate("/")}>Logout</button>
       </nav>
 
       <h2>Search Profiles</h2>
