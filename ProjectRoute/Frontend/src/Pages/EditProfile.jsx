@@ -98,126 +98,128 @@ const EditProfile = () => {
         <button onClick={() => alert("Settings coming soon!")}>Settings</button>
         <button onClick={() => navigate("/")}>Logout</button>
       </nav>
-
-      <h2>Edit Profile</h2>
-      <hr />
-
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      <form className="edit-form" onSubmit={handleUpdateProfile}>
-        <div className="form-row">
-          <label>
-            First Name:
-            <input
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </label>
-          <label>
-            Last Name:
-            <input
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </label>
-        </div>
-
-        <div className="form-row">
-          <label>
-            Driver License Number:
-            <input
-              type="text"
-              placeholder="e.g. ABC123456"
-              value={licenseNumber}
-              onChange={(e) => setLicenseNumber(e.target.value)}
-            />
-          </label>
-          <label>
-            Date of Birth:
-            <input
-              type="text"
-              placeholder="DD/MM/YYYY"
-              value={dob}
-              onChange={(e) => setDOB(e.target.value)}
-            />
-          </label>
-        </div>
-
-        <div className="form-row">
-          <label>
-            Email:
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-        </div>
-
+      
+      <div className="dashboard-content">
+        <h2>Edit Profile</h2>
         <hr />
 
-        <h3>Debt</h3>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
 
-        <div className="form-row">
-          <label>
-            Owed To:
-            <input
-              type="text"
-              value={debtOwedTo}
-              onChange={(e) => setDebtOwedTo(e.target.value)}
-            />
-          </label>
-        </div>
+        <form className="edit-form" onSubmit={handleUpdateProfile}>
+          <div className="form-row">
+            <label>
+              First Name:
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </label>
+            <label>
+              Last Name:
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </label>
+          </div>
 
-        <div className="form-row">
-          <label>
-            Type:
-            <input
-              type="text"
-              value={debtType}
-              onChange={(e) => setDebtType(e.target.value)}
-            />
-          </label>
-          <label>
-            Total ($):
-            <input
-              type="text"
-              value={debtAmount}
-              onChange={(e) => setDebtAmount(e.target.value)}
-            />
-          </label>
-        </div>
+          <div className="form-row">
+            <label>
+              Driver License Number:
+              <input
+                type="text"
+                placeholder="e.g. ABC123456"
+                value={licenseNumber}
+                onChange={(e) => setLicenseNumber(e.target.value)}
+              />
+            </label>
+            <label>
+              Date of Birth:
+              <input
+                type="text"
+                placeholder="DD/MM/YYYY"
+                value={dob}
+                onChange={(e) => setDOB(e.target.value)}
+              />
+            </label>
+          </div>
 
-        <hr />
-        
-        <div className="form-row">
-          <label>
-            Missing Work:
-            <textarea
-              rows={3}
-              value={missingWork}
-              onChange={(e) => setMissingWork(e.target.value)}
-            />
-          </label>
-        </div>
+          <div className="form-row">
+            <label>
+              Email:
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+          </div>
 
-        <div className="form-row">
-          <label>
-            Notes:
-            <textarea
-              rows={3}
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-            />
-          </label>
-        </div>
+          <hr />
 
-        <button type="submit" className="update-btn">
-          Update Profile
-        </button>
-      </form>
+          <h3>Debt</h3>
+
+          <div className="form-row">
+            <label>
+              Owed To:
+              <input
+                type="text"
+                value={debtOwedTo}
+                onChange={(e) => setDebtOwedTo(e.target.value)}
+              />
+            </label>
+          </div>
+
+          <div className="form-row">
+            <label>
+              Type:
+              <input
+                type="text"
+                value={debtType}
+                onChange={(e) => setDebtType(e.target.value)}
+              />
+            </label>
+            <label>
+              Total ($):
+              <input
+                type="text"
+                value={debtAmount}
+                onChange={(e) => setDebtAmount(e.target.value)}
+              />
+            </label>
+          </div>
+
+          <hr />
+          
+          <div className="form-row">
+            <label>
+              Missing Work:
+              <textarea
+                rows={3}
+                value={missingWork}
+                onChange={(e) => setMissingWork(e.target.value)}
+              />
+            </label>
+          </div>
+
+          <div className="form-row">
+            <label>
+              Notes:
+              <textarea
+                rows={3}
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+              />
+            </label>
+          </div>
+
+          <button type="submit" className="update-btn">
+            Update Profile
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

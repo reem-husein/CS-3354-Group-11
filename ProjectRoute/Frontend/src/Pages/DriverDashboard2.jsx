@@ -15,6 +15,7 @@ const DriverDashboard2 = () => {
 
       <div className="dashboard-content">
         <h2>Driver Dashboard</h2>
+        <hr />
         <h3>Welcome to ChauffeurCheck!</h3>
 
         <button 

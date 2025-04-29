@@ -50,7 +50,7 @@ const DriverApplication = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <nav className={styles.topMenu}>
+      <nav className="dashboard-menu">
         <button onClick={() => navigate("/driver-dashboard2")}>Home</button>
         <button onClick={() => alert("Settings coming soon!")}>Settings</button>
         <button onClick={() => navigate("/")}>Logout</button>

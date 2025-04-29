@@ -84,66 +84,68 @@ export default function SearchPage() {
         <button onClick={() => navigate("/")}>Logout</button>
       </nav>
 
-      <h2>Search Profiles</h2>
+      <div className="dashboard-content">
+        <h2>Search Profiles</h2>
 
-      <div className="search-bar-container">
-        <input
-          type="text"
-          placeholder="Search by Name"
-          className="search-input"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <button className="search-icon-btn" onClick={handleSearch}>
-          🔍
-        </button>
-      </div>
+        <div className="search-bar-container">
+          <input
+            type="text"
+            placeholder="Search by Name"
+            className="search-input"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button className="search-icon-btn" onClick={handleSearch}>
+            🔍
+          </button>
+        </div>
 
-      <table className="results-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Edit</th>
-          </tr>
-        </thead>
-        <tbody>
-          {loading ? (
+        <table className="results-table">
+          <thead>
             <tr>
-              <td colSpan="3" style={{ textAlign: "center" }}>
-                Loading…
-              </td>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Edit</th>
             </tr>
-          ) : error ? (
-            <tr>
-              <td colSpan="3" style={{ textAlign: "center", color: "red" }}>
-                Error: {error}
-              </td>
-            </tr>
-          ) : results.length === 0 ? (
-            <tr>
-              <td colSpan="3" style={{ textAlign: "center" }}>
-                No profiles found.
-              </td>
-            </tr>
-          ) : (
-            results.map((profile, idx) => (
-              <tr key={idx}>
-                <td>{profile.name || "—"}</td>
-                <td>{profile.email}</td>
-                <td>
-                  <button
-                    className="edit-btn"
-                    onClick={() => handleEdit(profile)}
-                  >
-                    Edit
-                  </button>
+          </thead>
+          <tbody>
+            {loading ? (
+              <tr>
+                <td colSpan="3" style={{ textAlign: "center" }}>
+                  Loading…
                 </td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+            ) : error ? (
+              <tr>
+                <td colSpan="3" style={{ textAlign: "center", color: "red" }}>
+                  Error: {error}
+                </td>
+              </tr>
+            ) : results.length === 0 ? (
+              <tr>
+                <td colSpan="3" style={{ textAlign: "center" }}>
+                  No profiles found.
+                </td>
+              </tr>
+            ) : (
+              results.map((profile, idx) => (
+                <tr key={idx}>
+                  <td>{profile.name || "—"}</td>
+                  <td>{profile.email}</td>
+                  <td>
+                    <button
+                      className="edit-btn"
+                      onClick={() => handleEdit(profile)}
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
